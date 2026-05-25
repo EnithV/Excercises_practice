@@ -1,0 +1,188 @@
+:root {
+  --brand: #1a365d;
+  --brand-light: #2c5282;
+  --accent: #ed8936;
+  --surface: #f7fafc;
+  --focus-ring: #3182ce;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background-color: var(--surface);
+  color: #1a202c;
+}
+
+.site-nav {
+  background: var(--brand) !important;
+}
+
+.brand-accent {
+  color: var(--accent);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  z-index: 9999;
+  padding: 0.75rem 1.25rem;
+  background: #fff;
+  color: var(--brand);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+  color: #fff;
+  padding: 3.5rem 0 3rem;
+}
+
+.hero-badge {
+  opacity: 0.9;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  height: 100%;
+}
+
+.stat-card strong {
+  font-size: 1.75rem;
+  display: block;
+  line-height: 1.2;
+}
+
+.filters-bar {
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.exercise-card .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exercise-card .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1.25rem rgba(26, 54, 93, 0.12) !important;
+}
+
+.fizz-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.fizz-item {
+  min-width: 2.5rem;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.75rem;
+  text-align: center;
+  border-radius: 0.35rem;
+  background: #e2e8f0;
+  color: #1a202c;
+}
+
+.fizz-item.fizz {
+  background: #bee3f8;
+  color: #2c5282;
+  font-weight: 600;
+}
+
+.fizz-item.buzz {
+  background: #feebc8;
+  color: #9c4221;
+  font-weight: 600;
+}
+
+.fizz-item.fizz-buzz {
+  background: #c6f6d5;
+  color: #276749;
+  font-weight: 700;
+}
+
+.code-panel {
+  border-radius: 0.5rem;
+  margin: 0;
+}
+
+.code-panel code {
+  font-size: 0.85rem;
+  display: block;
+  max-height: 300px;
+  overflow: auto;
+  padding: 1rem !important;
+}
+
+.lang-btn.active {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--brand) !important;
+  font-weight: 600;
+}
+
+footer {
+  border-top: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+
+/* Focus visible for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.nav-pills .nav-link.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .exercise-card .card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 1.55rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .fizz-item {
+    border: 1px solid CanvasText;
+  }
+}
