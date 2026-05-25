@@ -13,8 +13,9 @@
 
 | Part | Description |
 |------|-------------|
-| **Root** (`index.html`, `js/`, `css/`) | Web catalog — 35 exercises, live demos, code tabs |
-| **`java/src/`** | Runnable Java (35 classes + `Main.java` menu) |
+| **Root** (`index.html`, `js/`, `css/`) | Web catalog — 35 exercises, live demos (JavaScript) |
+| **`js/exercises-code.js`** | Sample solutions in **Java**, **JavaScript**, and **Python** (all 35) |
+| **`java/src/`** | Runnable Java in the terminal (35 classes + `Main.java` menu) |
 
 ---
 

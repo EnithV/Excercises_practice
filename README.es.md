@@ -13,8 +13,9 @@
 
 | Parte | Descripción |
 |-------|-------------|
-| **Raíz** (`index.html`, `js/`, `css/`) | Catálogo web — 35 ejercicios, demos en vivo, pestañas de código |
-| **`java/src/`** | Java ejecutable (35 clases + menú `Main.java`) |
+| **Raíz** (`index.html`, `js/`, `css/`) | Catálogo web — 35 ejercicios, demos en vivo (JavaScript) |
+| **`js/exercises-code.js`** | Soluciones de ejemplo en **Java**, **JavaScript** y **Python** (los 35) |
+| **`java/src/`** | Java ejecutable en consola (35 clases + menú `Main.java`) |
 
 ---
 

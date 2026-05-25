@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:ghpages": "BASE_PATH=/Excercises_practice/ vite build",
+    "build:ghpages": "node scripts/build-ghpages.mjs",
     "preview": "vite preview",
     "deploy": "npm run build:ghpages && gh-pages -d dist"
   },
