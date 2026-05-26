@@ -47,7 +47,7 @@ const I18N = {
     noJava: "Solución Java en preparación.",
     noJs: "Solución JavaScript en preparación.",
     noPython: "Solución Python en preparación.",
-    footerAuthor: "Gicela Vargas · Generation Colombia",
+    footerCredit: "Gicela Vargas · Ejercicios de práctica",
     footerLive: "Demo en vivo",
     githubRepo: "Ver en GitHub",
     cat_logic: "Lógica",
