@@ -93,6 +93,8 @@ body {
   background: var(--bg-deep);
   color: var(--text);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-accent {
@@ -602,15 +604,62 @@ body {
    Footer
    ========================================================================== */
 .site-footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
   border-top: 1px solid var(--glass-border);
-  color: var(--text-muted);
-  background: rgba(12, 14, 26, 0.6);
-  backdrop-filter: blur(8px);
+  background: rgba(12, 14, 26, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.9rem;
 }
 
-.site-footer p:first-child {
-  font-weight: 600;
+.footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.footer-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: 2rem;
+  padding: 0.35rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.footer-pill-link {
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.footer-pill-link:hover {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(167, 139, 250, 0.35);
+  color: #e9d5ff;
+}
+
+.footer-team {
   color: var(--text);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-astro {
+  color: var(--accent-2);
+  font-size: 1.15rem;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.45));
+  animation: astro-float 3s ease-in-out infinite;
+}
+
+@keyframes astro-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 /* ==========================================================================
@@ -643,6 +692,10 @@ select:focus-visible,
 
   .exercise-card:hover .ex-card {
     transform: none;
+  }
+
+  .footer-astro {
+    animation: none;
   }
 }
 
