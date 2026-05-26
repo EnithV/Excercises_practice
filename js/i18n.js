@@ -7,6 +7,7 @@ const I18N = {
     brand: "Ejercicios",
     brandAccent: "Práctica",
     navCatalog: "Catálogo",
+    catalogSubtitle: "Explora y practica",
     navGithub: "GitHub",
     navPortfolio: "Páginas portafolio",
     navMenu: "Abrir menú",
@@ -41,7 +42,7 @@ const I18N = {
     tabPython: "Python",
     hintLabel: "Cómo resolverlo:",
     demoSoon:
-      "Este ejercicio aún no tiene demo. Puedes leer el enunciado y practicarlo en Java, JavaScript o Python en tu editor.",
+      "Este ejercicio aún no tiene demo interactiva. Lee el enunciado e impleméntalo en Java, JavaScript o Python en tu entorno local.",
     classJava: "Archivo Java:",
     noJava: "Solución Java en preparación.",
     noJs: "Solución JavaScript en preparación.",
@@ -93,6 +94,7 @@ const I18N = {
     brand: "Practice",
     brandAccent: "Exercises",
     navCatalog: "Catalog",
+    catalogSubtitle: "Browse and practice",
     navGithub: "GitHub",
     navPortfolio: "Portfolio pages",
     navMenu: "Open menu",
@@ -127,7 +129,7 @@ const I18N = {
     tabPython: "Python",
     hintLabel: "How to approach it:",
     demoSoon:
-      "This exercise has no demo yet. Read the description and practice in Java, JavaScript, or Python in your own editor.",
+      "This exercise has no interactive demo yet. Read the description and implement it in Java, JavaScript, or Python in a local environment.",
     classJava: "Java file:",
     noJava: "Java solution coming soon.",
     noJs: "JavaScript solution coming soon.",

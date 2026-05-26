@@ -26,7 +26,17 @@
 
   function badgeDifficulty(d) {
     const info = DIFFICULTIES[d] || DIFFICULTIES.facil;
-    return `<span class="badge text-bg-${info.class}">${escapeHtml(I18n.t(info.key))}</span>`;
+    return `<span class="badge diff-badge diff-${d || "facil"}">${escapeHtml(I18n.t(info.key))}</span>`;
+  }
+
+  function categoryIcon(cat) {
+    const icons = {
+      cadenas: "fa-font",
+      arreglos: "fa-table-cells",
+      matematicas: "fa-calculator",
+      logica: "fa-code-branch",
+    };
+    return icons[cat] || "fa-code";
   }
 
   function categoryLabel(key) {
@@ -47,33 +57,36 @@
 
   function cardHtml(ex) {
     const statusBadge = ex.implemented
-      ? `<span class="badge text-bg-primary"><i class="fa-solid fa-play me-1" aria-hidden="true"></i>${escapeHtml(I18n.t("badgeDemo"))}</span>`
-      : `<span class="badge text-bg-secondary"><i class="fa-solid fa-clock me-1" aria-hidden="true"></i>${escapeHtml(I18n.t("badgeSoon"))}</span>`;
+      ? `<span class="badge badge-live"><i class="fa-solid fa-bolt me-1" aria-hidden="true"></i>${escapeHtml(I18n.t("badgeDemo"))}</span>`
+      : `<span class="badge badge-soon"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>${escapeHtml(I18n.t("badgeSoon"))}</span>`;
 
     const title = exText(ex, "title");
     const desc = exText(ex, "description");
+    const cat = ex.category || "logica";
 
     return `
-      <article class="col-md-6 col-lg-4 exercise-card" data-id="${ex.id}"
-        data-category="${ex.category}" data-implemented="${ex.implemented}">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <span class="text-muted small fw-semibold" aria-hidden="true">#${String(ex.id).padStart(2, "0")}</span>
+      <article class="col-md-6 col-lg-4 exercise-card cat-${cat}" data-id="${ex.id}"
+        data-category="${cat}" data-implemented="${ex.implemented}">
+        <div class="ex-card h-100">
+          <div class="ex-card-accent" aria-hidden="true">
+            <span class="ex-card-icon"><i class="fa-solid ${categoryIcon(cat)}" aria-hidden="true"></i></span>
+            <span class="ex-num">#${String(ex.id).padStart(2, "0")}</span>
+          </div>
+          <div class="ex-card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+              <span class="cat-pill">
+                <i class="fa-solid ${categoryIcon(cat)} me-1" aria-hidden="true"></i>
+                ${escapeHtml(categoryLabel(cat))}
+              </span>
               ${badgeDifficulty(ex.difficulty)}
             </div>
-            <h3 class="h5 card-title">${escapeHtml(title)}</h3>
-            <p class="card-text text-muted small flex-grow-1">${escapeHtml(desc)}</p>
-            <div class="d-flex flex-wrap gap-1 mb-3" aria-label="${escapeHtml(categoryLabel(ex.category))}">
-              <span class="badge text-bg-light text-dark border">
-                <i class="fa-solid ${ex.category === "cadenas" ? "fa-font" : ex.category === "arreglos" ? "fa-table-cells" : ex.category === "matematicas" ? "fa-calculator" : "fa-code-branch"} me-1" aria-hidden="true"></i>
-                ${escapeHtml(categoryLabel(ex.category))}
-              </span>
-              ${statusBadge}
-            </div>
-            <button type="button" class="btn btn-outline-primary btn-sm w-100 btn-open-exercise"
+            <h3 class="ex-title">${escapeHtml(title)}</h3>
+            <p class="ex-desc flex-grow-1">${escapeHtml(desc)}</p>
+            <div class="ex-badges mb-3">${statusBadge}</div>
+            <button type="button" class="btn btn-ex-open w-100 btn-open-exercise"
               data-id="${ex.id}" aria-label="${escapeHtml(I18n.t("cardOpen"))}: ${escapeHtml(title)}">
-              ${escapeHtml(I18n.t("cardOpen"))} <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+              <span>${escapeHtml(I18n.t("cardOpen"))}</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
             </button>
           </div>
         </div>
@@ -86,7 +99,8 @@
       btn.addEventListener("click", () => openExercise(Number(btn.dataset.id)));
     });
     const msg = `${list.length} ${I18n.t("resultsLabel")}`;
-    document.getElementById("results-count").textContent = list.length;
+    const countEl = document.getElementById("results-count");
+    if (countEl) countEl.textContent = list.length;
     if (resultsLive) resultsLive.textContent = msg;
   }
 
@@ -235,12 +249,13 @@
     openId = id;
 
     document.getElementById("modal-title").textContent = `#${ex.id} — ${exText(ex, "title")}`;
+    const statusModal = ex.implemented
+      ? `<span class="badge badge-live ms-1">${escapeHtml(I18n.t("badgeDemo"))}</span>`
+      : `<span class="badge badge-soon ms-1">${escapeHtml(I18n.t("badgeSoon"))}</span>`;
     document.getElementById("modal-badges").innerHTML = `
       ${badgeDifficulty(ex.difficulty)}
-      <span class="badge text-bg-light text-dark border ms-1">${escapeHtml(categoryLabel(ex.category))}</span>
-      <span class="badge text-bg-${ex.implemented ? "primary" : "secondary"} ms-1">
-        ${escapeHtml(ex.implemented ? I18n.t("badgeDemo") : I18n.t("badgeSoon"))}
-      </span>`;
+      <span class="cat-pill ms-1">${escapeHtml(categoryLabel(ex.category))}</span>
+      ${statusModal}`;
 
     document.getElementById("modal-description").textContent = exText(ex, "description");
     document.getElementById("modal-problem").textContent = exText(ex, "problem");
