@@ -134,7 +134,7 @@ const I18N = {
     noJava: "Java solution coming soon.",
     noJs: "JavaScript solution coming soon.",
     noPython: "Python solution coming soon.",
-    footerAuthor: "Gicela Vargas · Generation Colombia",
+    footerCredit: "Gicela Vargas · Practice exercises",
     footerLive: "Live demo",
     githubRepo: "View on GitHub",
     cat_logic: "Logic",
